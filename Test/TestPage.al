@@ -24,10 +24,9 @@ page 50109 "Test Sales Quote Dimension"
                 Caption = 'Test Get Sales Quotes With no Dimension';
                 trigger OnAction()
                 var
-                    CopyDimension: Codeunit CopyDimension;
-                    UpdateSalesDoc: Codeunit UpdateSalesDoc;
+                    CopyDimension: Codeunit "Sales Doc Dimension Processor";
                 begin
-                    CopyDimension.UpdateSalesDimensions();
+                    CopyDimension.ProcessSalesDocuments();
                 end;
             }
         }
