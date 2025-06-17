@@ -19,7 +19,7 @@ codeunit 50110 "Sales Doc Dimension Processor"
             until SalesHeader.Next() = 0;
     end;
 
-    local procedure CopyDefaultDimensions(var SalesHeader: Record "Sales Header")
+    procedure CopyDefaultDimensions(var SalesHeader: Record "Sales Header")
     var
         SalesLine: Record "Sales Line";
         Item: Record Item;
@@ -48,7 +48,7 @@ codeunit 50110 "Sales Doc Dimension Processor"
             until SalesLine.Next() = 0;
     end;
 
-    local procedure CopyCustomerDimensions(var SalesHeader: Record "Sales Header")
+    procedure CopyCustomerDimensions(var SalesHeader: Record "Sales Header")
     var
         TempDimSetEntry: Record "Dimension Set Entry" temporary;
         DimensionManagement: Codeunit DimensionManagement;
@@ -64,7 +64,7 @@ codeunit 50110 "Sales Doc Dimension Processor"
         end;
     end;
 
-    local procedure GetCustomerDimensions(CustomerNo: Code[20]; var TempDimSetEntry: Record "Dimension Set Entry" temporary)
+    procedure GetCustomerDimensions(CustomerNo: Code[20]; var TempDimSetEntry: Record "Dimension Set Entry" temporary)
     var
         Customer: Record Customer;
         CustDefaultDim: Record "Default Dimension";
@@ -83,7 +83,7 @@ codeunit 50110 "Sales Doc Dimension Processor"
         end;
     end;
 
-    local procedure AdjustEmptyDimensionValues(var SalesHeader: Record "Sales Header")
+    procedure AdjustEmptyDimensionValues(var SalesHeader: Record "Sales Header")
     var
         DimSetEntry: Record "Dimension Set Entry";
         DefaultDim: Record "Default Dimension";
@@ -101,7 +101,7 @@ codeunit 50110 "Sales Doc Dimension Processor"
             until SalesLine.Next() = 0;
     end;
 
-    local procedure UpdateEmptyHeaderDimensions(SalesHeader: Record "Sales Header")
+    procedure UpdateEmptyHeaderDimensions(SalesHeader: Record "Sales Header")
     var
         DimSetEntry: Record "Dimension Set Entry";
         DefaultDim: Record "Default Dimension";
@@ -122,7 +122,7 @@ codeunit 50110 "Sales Doc Dimension Processor"
             until DimSetEntry.Next() = 0;
     end;
 
-    local procedure UpdateEmptyLineDimensions(var SalesLine: Record "Sales Line")
+    procedure UpdateEmptyLineDimensions(var SalesLine: Record "Sales Line")
     var
         DimSetEntry: Record "Dimension Set Entry";
         DefaultDim: Record "Default Dimension";
@@ -143,7 +143,7 @@ codeunit 50110 "Sales Doc Dimension Processor"
             until DimSetEntry.Next() = 0;
     end;
 
-    local procedure CreateItemDimensionSet(Item: Record Item; var TempDimSetEntry: Record "Dimension Set Entry" temporary)
+    procedure CreateItemDimensionSet(Item: Record Item; var TempDimSetEntry: Record "Dimension Set Entry" temporary)
     var
         ItemDefaultDim: Record "Default Dimension";
     begin
@@ -160,7 +160,7 @@ codeunit 50110 "Sales Doc Dimension Processor"
             until ItemDefaultDim.Next() = 0;
     end;
 
-    local procedure AddDimensionEntry(var TempDimSetEntry: Record "Dimension Set Entry" temporary; DimCode: Code[20]; DimValueCode: Code[20])
+    procedure AddDimensionEntry(var TempDimSetEntry: Record "Dimension Set Entry" temporary; DimCode: Code[20]; DimValueCode: Code[20])
     begin
         TempDimSetEntry.Init();
         TempDimSetEntry.Validate("Dimension Code", DimCode);
