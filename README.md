@@ -1,6 +1,6 @@
 # Sales Document Dimension Processor
 
-Copy default customer and item dimensions onto Business Central sales headers and lines automatically
+Copy default customer and item dimensions into Business Central sales headers and lines automatically
 
 ## Overview
 
